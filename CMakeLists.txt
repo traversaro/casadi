@@ -870,6 +870,12 @@ foreach(PKG HIGHS PROXQP OSQP SUPERSCS BONMIN IPOPT CBC CLP MUMPS SPRAL HSL METI
       get_property(PACKAGES_NOT_FOUND_BACKUP GLOBAL PROPERTY PACKAGES_NOT_FOUND)
       get_property(PACKAGES_FOUND_BACKUP GLOBAL PROPERTY PACKAGES_FOUND)
       find_package(${PKG})
+      if(PKG EQUAL "PROXQP")
+        find_package(proxsuite)
+	      set(PROXQP_FOUND ${proxsuite_FOUND})
+      else()
+        find_package(${PKG})
+      endif()
     endif()
     if (WITH_BUILD_${PKG} OR (WITH_BUILD_REQUIRED AND NOT ${PKG}_FOUND))
 
