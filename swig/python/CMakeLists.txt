@@ -59,7 +59,7 @@ else()
     endif()
   endif()
   
-  CasadiGetPythonVersionMajor(PYTHON_VERSION_MAJOR "${PYTHON_INCLUDE_PATH}")
+  set(PYTHON_VERSION_MAJOR 3)
   include_directories(${PYTHON_INCLUDE_PATH})
   
   
